@@ -1,29 +1,123 @@
-import React from 'react'
+import React, { useState } from 'react'
+import AuthService from '../services/auth.service';
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+
 
 const Register = () => {
+
+    let navigate = useNavigate()
+
+    const [user, setUser] = useState({
+        'firstName':'',
+        'lastName':'',
+        'email':'',
+        'username':'',
+        'password':'',
+        'passwordConf':''
+    })
+
+    const handleChange = (key, value) => {
+        setUser({
+            ...user,
+            [key]: value
+        })
+    }
+
+    const handleRegister =(e) => {
+        AuthService.register(user);
+        navigate('/home')
+    }
+
     return (
         <div>
 
             <div className="bg-yellow-400 h-screen overflow-hidden flex items-center justify-center">
                 <div className="bg-white lg:w-5/12 md:6/12 w-10/12 shadow-3xl">
 
-                    <form className="p-12 md:p-24">
+                    <form onSubmit={handleRegister}className="p-12 md:p-24">
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <input type="text" id="firstname" className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" placeholder="First Name" />
+                            <label htmlFor='first_name'>First name:</label>
+                            <input  className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full"
+                                type="text" 
+                                id="firstname" 
+                                placeholder="First Name"
+                                required
+                                onChange={(e) =>handleChange('firstName', e.target.value)} 
+                            />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <input type="text" id="lastname" className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" placeholder="Last Name" />
+                            <label htmlFor='lastname'>Last Name:</label>
+                            <input className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" 
+                                type="text" 
+                                id="lastname"  
+                                placeholder="Last Name"
+                                required
+                                onChange={(e) =>handleChange('lastName', e.target.value)} 
+ 
+                                
+                            />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <input type="email" id="email" className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" placeholder="email" />
+                            <label htmlFor='email'>Email:</label>
+                            <input className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" 
+                                type="email" 
+                                id="email" 
+                                placeholder="email"
+                                required 
+                                onChange={(e) => handleChange('email', e.target.value)} 
+
+                            />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <input type="text" id="username" className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" placeholder="Username" />
+                            <label htmlFor='username'>Username:</label>
+                            <input className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full"
+                                type="text" 
+                                id="username"  
+                                placeholder="Username"
+                                required
+                                onChange={(e) => handleChange('username', e.target.value)} 
+ 
+                            />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <input type="password" id="password" className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" placeholder="Password" />
+                            <label htmlFor='pass'>Password:</label>
+                            <input  className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" 
+                                type="password" 
+                                id="password" 
+                                placeholder="Password"
+                                minLength='8'
+                                required
+                                onChange={(e) =>handleChange('password', e.target.value)} 
+                            />
                         </div>
-                        <button className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full">Sign Up</button>
+                        <div className="flex items-center text-lg mb-6 md:mb-8">
+                            <label htmlFor='pass'>Password:</label>
+                            <input  className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" 
+                                type="password" 
+                                id="password" 
+                                placeholder="Password Confirmation"
+                                minLength='8'
+                                required
+                                onChange={(e) => handleChange('passwordConf', e.target.value)}
+                                />
+                        </div>
+                        
+                        
+                        <button className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full"
+                        type='submit'
+                        value='Register'
+                        disabled={(
+                            user.password &&
+                            user.password.length >= 8 &&
+                            user.password === user.passwordConf &&
+                            user.firstName &&
+                            user.lastName &&
+                            user.email
+                          ) ? false : true
+                            }
+                        
+                        >Sign Up</button>
                     </form>
                 </div>
             </div>
