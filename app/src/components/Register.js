@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import AuthService from '../services/auth.service';
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
+// import axios from 'axios';
 
 
 const Register = () => {
@@ -35,9 +35,13 @@ const Register = () => {
             <div className="bg-yellow-400 h-screen overflow-hidden flex items-center justify-center">
                 <div className="bg-white lg:w-5/12 md:6/12 w-10/12 shadow-3xl">
 
-                    <form onSubmit={handleRegister}className="p-12 md:p-24">
+                    <form className="p-12 md:p-24"
+                    onSubmit={handleRegister}>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <label htmlFor='first_name'>First name:</label>
+                            <label className='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+
+                            htmlFor='first_name'>First name:
+                            </label>
                             <input  className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full"
                                 type="text" 
                                 id="firstname" 
@@ -47,7 +51,8 @@ const Register = () => {
                             />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <label htmlFor='lastname'>Last Name:</label>
+                            <label className='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4' 
+                            htmlFor='lastname'>Last Name:</label>
                             <input className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" 
                                 type="text" 
                                 id="lastname"  
@@ -59,7 +64,8 @@ const Register = () => {
                             />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <label htmlFor='email'>Email:</label>
+                            <label className='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                            htmlFor='email'>Email:</label>
                             <input className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" 
                                 type="email" 
                                 id="email" 
@@ -70,7 +76,8 @@ const Register = () => {
                             />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <label htmlFor='username'>Username:</label>
+                            <label className='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                            htmlFor='username'>Username:</label>
                             <input className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full"
                                 type="text" 
                                 id="username"  
@@ -81,7 +88,8 @@ const Register = () => {
                             />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <label htmlFor='pass'>Password:</label>
+                            <label className='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                            htmlFor='pass'>Password:</label>
                             <input  className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" 
                                 type="password" 
                                 id="password" 
@@ -92,7 +100,8 @@ const Register = () => {
                             />
                         </div>
                         <div className="flex items-center text-lg mb-6 md:mb-8">
-                            <label htmlFor='pass'>Password:</label>
+                            <label className='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                            htmlFor='pass'>Password:</label>
                             <input  className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" 
                                 type="password" 
                                 id="password" 
