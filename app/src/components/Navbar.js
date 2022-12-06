@@ -9,10 +9,10 @@ const Navbar = () => {
         <a href='register'>Sign Up</a>
         <a href='post'>Make posts</a>
         <a href='profile'>Profile</a>
-
-
     </div>
   )
 }
 
 export default Navbar
+
+
