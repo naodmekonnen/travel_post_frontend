@@ -21,7 +21,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
 
-          <h1>{process.env.REACT_APP_MYENVVAR}</h1>
+          {/* <h1>{process.env.REACT_APP_MYENVVAR}</h1> */}
           <Outlet />
           <Routes>
             <Route path='/home' element={<Home />}></Route>
