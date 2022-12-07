@@ -8,6 +8,8 @@ const Posts = () => {
     const [state, dispatch] = useGlobalState();
     const [postData, setPostData] = useState([]);
     const [postContent, setPostContent] = useState('');
+    const [commentData, setCommentData] = useState([])
+    const [comments, setComments] = useState([])
 
 
 
@@ -22,8 +24,24 @@ const Posts = () => {
             };
             let resp = await request(options);
             setPostData(resp.data);
+            return resp.data
         }
-        getPosts();
+        
+        let post = getPosts();
+
+        async function getComments(post) {
+            let options = {
+                url: "comments/",
+                method: "GET",
+                params: {
+                    post: post.id,
+                },
+            };
+            let resp = await request(options);
+            setCommentData(resp.data);
+        }
+        getComments(post);
+
     }, []);
 
 
@@ -43,6 +61,34 @@ const Posts = () => {
         ])
     }
 
+
+    // useEffect(() => {
+
+    // }, []);
+
+
+    // useEffect(() => {
+    //     async function postComments(){
+    //         let options = {
+    //             url: "comments/",
+    //             method: "POST",
+    //             data: {
+    //                 comment: comments,
+    //                 comment_author: state.currentUser.user_id,
+    //                 id: postContent.id,
+
+    //             },
+    //         }
+            
+    //         let resp = await request(options);
+    //         setComments([
+    //             ...comments,
+    //             resp.data
+    //         ])
+    //     }
+    //     postComments();
+    // }, []);
+
     return (
         <div>
             <div>
@@ -52,7 +98,8 @@ const Posts = () => {
                             <label for="post" className="sr-only">Your comment</label>
                             <textarea
                                 onChange={(e) => setPostContent(e.target.value)}
-                                id="post" rows="4" className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Your post..." required></textarea>
+                                id="post" 
+                                rows="4" className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Your post..." required></textarea>
                         </div>
                         <div className="align-items:center px-3 py-2 border-t dark:border-gray-600">
                             <button className="inline-flex -center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
@@ -79,7 +126,8 @@ const Posts = () => {
                                             <div className="mt-4 flex items-center space-x-4 py-6">
                                                 <div className="text-sm font-semibold">
                                                     {post.post_author}
-                                                    <span className="font-normal"></span></div>
+                                                    <span className="font-normal"></span>
+                                                </div>
                                             </div>
                                             <div className="p-6 bg-yellow-400 rounded-full h-4 w-4 flex items-center justify-center text-2xl text-white mt-4 shadow-lg cursor-pointer">+</div>
                                         </div>
@@ -90,6 +138,13 @@ const Posts = () => {
                     </div>
                 ))}
             </div>
+            {comments.map((comment) => (
+                <div key={comment.id}>
+                    {comment.comment}
+                    {comment.comment_author}
+                </div>
+            ))}
+
         </div>
     )
 }

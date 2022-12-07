@@ -26,7 +26,7 @@ const Register = () => {
 
     const handleRegister =(e) => {
         AuthService.register(user);
-        navigate('/home')
+        navigate('/posts')
     }
 
     return (
