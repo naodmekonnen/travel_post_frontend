@@ -43,7 +43,6 @@ const Posts = () => {
         ])
     }
 
-
     return (
         <div>
             <form className='grid justify-items-center'>
