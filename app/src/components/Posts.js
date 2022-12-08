@@ -44,8 +44,6 @@ const Posts = () => {
         ])
     }
 
-    // let post = postData
-
     useEffect(() => {
         async function getComments() {
             let options = {
@@ -135,7 +133,7 @@ const Posts = () => {
                                     </div>
                                 </div>
                                 { post.comments.map((c) => (
-                                    <div className="row">
+                                    <div key={c.id}className="row">
                                         {c.comment} - {c.commented_by}
                                     </div>
                                 ))}
@@ -161,12 +159,12 @@ const Posts = () => {
                     </div>
                 ))}
             </div>
-            {commentData.map((comment) => (
+            {/* {commentData.map((comment) => (
                 <div key={comment.id}>
                     {comment.comment}
                     {comment.comment_author}
-                </div>
-            ))}
+                </div> */}
+            {/* ))} */}
 
         </div>
     )
