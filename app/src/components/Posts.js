@@ -1,7 +1,6 @@
-import React from "react";
 import { useGlobalState } from "../context/GlobalState";
 import request from "../services/api.request";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 
 const Posts = () => {
@@ -9,7 +8,7 @@ const Posts = () => {
     const [postData, setPostData] = useState([]);
     const [postContent, setPostContent] = useState('');
     const [commentData, setCommentData] = useState([])
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState('')
 
 
 
@@ -24,24 +23,10 @@ const Posts = () => {
             };
             let resp = await request(options);
             setPostData(resp.data);
-            return resp.data
+            console.log(postData)
         }
-        
-        let post = getPosts();
-
-        async function getComments(post) {
-            let options = {
-                url: "comments/",
-                method: "GET",
-                params: {
-                    post: post.id,
-                },
-            };
-            let resp = await request(options);
-            setCommentData(resp.data);
-        }
-        getComments(post);
-
+        console.log(postData)
+        getPosts();
     }, []);
 
 
@@ -61,33 +46,62 @@ const Posts = () => {
         ])
     }
 
+    useEffect(() => {
+        async function getComments() {
+            let options = {
+                url: "comments/",
+                method: "GET",
+                params: {
+                    author__id: state.currentUser.user_id,
+                    // post__id: postData.id,
 
-    // useEffect(() => {
+                },
+            };
+            let resp = await request(options);
+            setCommentData(resp.data);
+        }
+        getComments();
+    }, []);
 
-    // }, []);
 
+    // async function postComments(){
+    //     let options = {
+    //         url: "comments/",
+    //         method: "POST",
+    //         data: {
+    //             comment: comments,
+    //             // post: postData.id,
+    //             comment_author: state.currentUser.user_id,
 
-    // useEffect(() => {
-    //     async function postComments(){
-    //         let options = {
-    //             url: "comments/",
-    //             method: "POST",
-    //             data: {
-    //                 comment: comments,
-    //                 comment_author: state.currentUser.user_id,
-    //                 id: postContent.id,
-
-    //             },
-    //         }
-            
-    //         let resp = await request(options);
-    //         setComments([
-    //             ...comments,
-    //             resp.data
-    //         ])
+    //         },
     //     }
-    //     postComments();
-    // }, []);
+
+    //     let resp = await request(options);
+    //     setComments([
+    //         ...comments,
+    //         resp.data
+    //     ])
+    // }
+    // postComments();
+
+
+
+    async function postComment(props) {
+        let options = {
+            url: 'comments/',
+            method: 'POST',
+            data: {
+                comment: comments,
+                author: state.currentUser.user_id,
+                post: props.props.id
+            }
+        }
+        let resp = await request(options)
+
+    }
+
+
+
 
     return (
         <div>
@@ -95,10 +109,10 @@ const Posts = () => {
                 <form className='grid justify-items-center'>
                     <div className="w-2/4 mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                         <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
-                            <label for="post" className="sr-only">Your comment</label>
+                            <label for="post" className="sr-only">Your Post</label>
                             <textarea
                                 onChange={(e) => setPostContent(e.target.value)}
-                                id="post" 
+                                id="post"
                                 rows="4" className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Your post..." required></textarea>
                         </div>
                         <div className="align-items:center px-3 py-2 border-t dark:border-gray-600">
@@ -133,12 +147,29 @@ const Posts = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <div>
+                                    <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+                                        <label for="post" className="sr-only">Your comment</label>
+                                        <textarea
+                                            onChange={(e) => setComments(e.target.value)}
+                                            id="post"
+                                            rows="4" className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Your post..." required></textarea>
+                                    </div>
+                                    <div className="align-items:center px-3 py-2 border-t dark:border-gray-600">
+                                    <button className="inline-flex -center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                                        onClick={postComment}
+                                        type="submit" >
+                                        Comment
+                                    </button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
-            {comments.map((comment) => (
+            {commentData.map((comment) => (
                 <div key={comment.id}>
                     {comment.comment}
                     {comment.comment_author}
