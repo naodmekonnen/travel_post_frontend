@@ -10,22 +10,20 @@ const Posts = () => {
     const [commentData, setCommentData] = useState([])
     const [comments, setComments] = useState('')
 
-
+    async function getPosts() {
+        let options = {
+            url: "posts/",
+            method: "GET",
+            params: {
+                author__id: state.currentUser.user_id,
+            },
+        };
+        let resp = await request(options);
+        setPostData(resp.data);
+        console.log(postData)
+    }
 
     useEffect(() => {
-        async function getPosts() {
-            let options = {
-                url: "posts/",
-                method: "GET",
-                params: {
-                    author__id: state.currentUser.user_id,
-                },
-            };
-            let resp = await request(options);
-            setPostData(resp.data);
-            console.log(postData)
-        }
-        console.log(postData)
         getPosts();
     }, []);
 
@@ -46,14 +44,18 @@ const Posts = () => {
         ])
     }
 
+    // let post = postData
+
     useEffect(() => {
         async function getComments() {
             let options = {
                 url: "comments/",
                 method: "GET",
                 params: {
-                    author__id: state.currentUser.user_id,
-                    // post__id: postData.id,
+                    // author__id: state.currentUser.user_id,
+                    // comment: commentData,
+                    comment_author: state.currentUser.user_id,
+                    // post: post.id,
 
                 },
             };
@@ -64,40 +66,25 @@ const Posts = () => {
     }, []);
 
 
-    // async function postComments(){
-    //     let options = {
-    //         url: "comments/",
-    //         method: "POST",
-    //         data: {
-    //             comment: comments,
-    //             // post: postData.id,
-    //             comment_author: state.currentUser.user_id,
 
-    //         },
-    //     }
-
-    //     let resp = await request(options);
-    //     setComments([
-    //         ...comments,
-    //         resp.data
-    //     ])
-    // }
-    // postComments();
-
-
-
-    async function postComment(props) {
+    async function postComment(postId) {
+        console.log('psoting@')
         let options = {
             url: 'comments/',
             method: 'POST',
             data: {
                 comment: comments,
-                author: state.currentUser.user_id,
-                post: props.props.id
+                comment_author: state.currentUser.user_id,
+                post: postId,
             }
         }
-        let resp = await request(options)
-
+        console.log(options)
+        let resp = await request(options);
+        setCommentData([
+            ...commentData,
+            resp.data
+        ])
+        getPosts()
     }
 
 
@@ -109,7 +96,7 @@ const Posts = () => {
                 <form className='grid justify-items-center'>
                     <div className="w-2/4 mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                         <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
-                            <label for="post" className="sr-only">Your Post</label>
+                            <label htmlFor="post" className="sr-only">Your Post</label>
                             <textarea
                                 onChange={(e) => setPostContent(e.target.value)}
                                 id="post"
@@ -147,9 +134,14 @@ const Posts = () => {
                                         </div>
                                     </div>
                                 </div>
+                                { post.comments.map((c) => (
+                                    <div className="row">
+                                        {c.comment} - {c.commented_by}
+                                    </div>
+                                ))}
                                 <div>
                                     <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
-                                        <label for="post" className="sr-only">Your comment</label>
+                                        <label htmlFor="post" className="sr-only">Your comment</label>
                                         <textarea
                                             onChange={(e) => setComments(e.target.value)}
                                             id="post"
@@ -157,7 +149,7 @@ const Posts = () => {
                                     </div>
                                     <div className="align-items:center px-3 py-2 border-t dark:border-gray-600">
                                     <button className="inline-flex -center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
-                                        onClick={postComment}
+                                        onClick={() => postComment(post.id)}
                                         type="submit" >
                                         Comment
                                     </button>

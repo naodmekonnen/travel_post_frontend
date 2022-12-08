@@ -26,6 +26,7 @@ function App() {
           {/* <h1>{process.env.REACT_APP_MYENVVAR}</h1> */}
           <Outlet />
           <Routes>
+            
             <Route path='/home' element={<Home />}></Route>
             <Route path='/about' element={<AboutUs />}></Route>
             <Route path='/login' element={<Login />}></Route>
@@ -33,11 +34,8 @@ function App() {
             <Route path='/posts' element={<Posts />}></Route>
             <Route path='/profile' element={<Profile />}></Route>
             <Route path='/logout' element={<Logout />}></Route>
-        
-
-
-
-          </Routes>
+            
+        </Routes>
         </BrowserRouter>
       </GlobalProvider>
 
