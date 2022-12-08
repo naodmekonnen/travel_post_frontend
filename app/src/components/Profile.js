@@ -3,6 +3,7 @@ import { useGlobalState } from "../context/GlobalState";
 
 const Profile = () => {
   const [ state, dispatch ] = useGlobalState();
+  
 
   return (
     <div>

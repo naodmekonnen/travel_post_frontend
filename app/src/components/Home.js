@@ -6,29 +6,7 @@ import { useGlobalState } from '../context/GlobalState'
 
 const HomePage = () => {
     
-    const [state, dispatch] = useGlobalState()
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        async function getPosts() {
-          let options = {
-            url: "posts/",
-            method: "GET",
-            params: {
-            post_author__id: state.currentUser.user_id,
-            },
-          };
-          let response = await request(options);
-          await dispatch({
-            postData: response.data,
-          });
-          setPosts(response.data);
-        }
-        getPosts();
-      }, []);
-    
-    
-      return (
+  return (
         <div>
             <div className="bg-yellow-400 h-screen overflow-hidden flex items-center justify-center">
                 <h1>Homepage</h1>
