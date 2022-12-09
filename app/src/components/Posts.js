@@ -50,11 +50,7 @@ const Posts = () => {
                 url: "comments/",
                 method: "GET",
                 params: {
-                    // author__id: state.currentUser.user_id,
-                    // comment: commentData,
-                    comment_author: state.currentUser.user_id,
-                    // post: post.id,
-
+                   comment_author: state.currentUser.user_id,
                 },
             };
             let resp = await request(options);
@@ -124,7 +120,7 @@ const Posts = () => {
                                         <div className="flex justify-between items-center">
                                             <div className="mt-4 flex items-center space-x-4 py-6">
                                                 <div className="text-sm font-semibold">
-                                                    {post.post_author}
+                                                    {post.post_author.username}
                                                     <span className="font-normal"></span>
                                                 </div>
                                             </div>
@@ -159,13 +155,6 @@ const Posts = () => {
                     </div>
                 ))}
             </div>
-            {/* {commentData.map((comment) => (
-                <div key={comment.id}>
-                    {comment.comment}
-                    {comment.comment_author}
-                </div> */}
-            {/* ))} */}
-
         </div>
     )
 }
