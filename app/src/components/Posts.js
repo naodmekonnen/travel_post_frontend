@@ -62,7 +62,6 @@ const Posts = () => {
 
 
     async function postComment(postId) {
-        console.log('psoting@')
         let options = {
             url: 'comments/',
             method: 'POST',

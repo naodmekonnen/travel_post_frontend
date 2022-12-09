@@ -22,9 +22,7 @@ const Profile = () => {
 
   useEffect(() => {
     getUserData();
-    console.log(userData)
-
-  }, []);
+}, []);
 
 
   return (
@@ -34,8 +32,18 @@ const Profile = () => {
       <h4>first name: {userData.first_name}</h4>
       <h4>last name: {userData.last_name}</h4>
       <h4>email: {userData.email}</h4>
-      <h4>{userData.followers}</h4>
-      <h4>{userData.following}</h4>
+      
+      {userData.followers?.map((f) => (
+      <div key={f.id}>
+      <h4>{f.followers}</h4>
+      </div>
+      ))}
+
+      {userData.following?.map((f) => (
+      <div key={f.id}>
+      <h4>{f.following}</h4>
+      </div>
+      ))}
   </div>
   )
 }
