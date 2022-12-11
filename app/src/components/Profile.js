@@ -6,6 +6,11 @@ import request from "../services/api.request";
 const Profile = () => {
   const [state, dispatch] = useGlobalState();
   const [userData, setUserData] = useState([]);
+  const [followers, setFollowers] = useState();
+  const [following, setFollowing] = useState();
+  const [followUser, setfollowUser] = useState();
+
+
 
   const authUser = state.currentUser.user_id;
 
@@ -22,29 +27,76 @@ const Profile = () => {
 
   useEffect(() => {
     getUserData();
-}, []);
+  }, []);
+
+
+
+  async function getFollowers() {
+    let options = {
+      url: "followers/",
+      method: "GET",
+      params: {
+        author__id: state.currentUser.user_id,
+      },
+    };
+    let resp = await request(options);
+    setFollowers(resp.data);
+  }
+
+  useEffect(() => {
+    getFollowers();
+  }, []);
+
+  async function getFollowing() {
+    let options = {
+      url: "followers/",
+      method: "GET",
+      params: {
+        author__id: state.currentUser.user_id,
+      },
+    };
+    let resp = await request(options);
+    setFollowing(resp.data);
+  }
+
+  useEffect(() => {
+    getFollowing();
+  }, []);
+
+
+//   async function postFollower(postId) {
+//     let options = {
+//         url: 'followers/',
+//         method: 'POST',
+//         data: {
+//             follower: state.currentUser.user_id,
+//         }
+//     }
+//     console.log(options)
+//     let resp = await request(options);
+//     setfollowUser([
+//         ...followUser,
+//         resp.data
+//     ])
+//     getFollowing();
+// }
+
+
+
 
 
   return (
 
-  <div>
+    <div>
       <h4>username: {userData.username}</h4>
       <h4>first name: {userData.first_name}</h4>
       <h4>last name: {userData.last_name}</h4>
       <h4>email: {userData.email}</h4>
-      
-      {userData.followers?.map((f) => (
-      <div key={f.id}>
-      <h4>{f.followers}</h4>
+      <div>
+        <h4>followers: {followers?.username}</h4>
+        <h4>following: {following?.username}</h4>
       </div>
-      ))}
-
-      {userData.following?.map((f) => (
-      <div key={f.id}>
-      <h4>{f.following}</h4>
-      </div>
-      ))}
-  </div>
+    </div>
   )
 }
 
