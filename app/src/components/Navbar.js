@@ -1,27 +1,20 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
 
-
-
-
   return (
-      <div className='bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full space-x-4 sticky top-0 overflow-hidden flex items-center justify-center'>
 
-        <a href='home'>Home</a>
-        <a href='about'>About</a>
-        <a href='login'>Login</a>
-        <a href='register'>Sign Up</a>
-        <a href='posts'>posts</a>
-        <a href='profile'>Profile</a>
-        <a href='logout'>Logout</a>
-
-      </div>
+<div className="w-full antialiased font-medium md:p-4 flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-2">
+    <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="home">Home</a>
+    <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="posts">Posts</a>
+    <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="login">Login</a>
+    <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="register">Sign Up</a>
+    <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="test">Temp</a>
+</div>
   )
 }
-
 export default Navbar
 
 

@@ -84,7 +84,7 @@ const Posts = () => {
 
 
     return (
-        <div>
+        <div className="h-screen bg-gradient-to-b from-blue-400 to-blue-1800">
             <div>
                 <form className='grid justify-items-center'>
                     <div className="w-2/4 mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
@@ -159,5 +159,6 @@ const Posts = () => {
 }
 
 export default Posts;
+
 
 
