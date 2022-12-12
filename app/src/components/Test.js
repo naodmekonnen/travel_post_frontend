@@ -2,18 +2,18 @@ import React from 'react'
 
 const Test = () => {
   return (
-  <div className='bg-gradient-to-b from-blue-400 to-blue-1800'>
-    <div className="w-full flex flex-row flex-wrap bg-gradient-to-b from-blue-400 to-blue-1800'">
+  <div>
+    <div className="w-full flex flex-row flex-wrap">
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-      <div className="w-full bg-indigo-100 h-screen flex flex-row flex-wrap justify-center ">
+      <div className="w-full h-screen flex flex-row flex-wrap justify-center ">
         <div className="w-full md:w-3/4 lg:w-2/4 p-5 md:px-12 lg:24 h-full overflow-x-scroll antialiased">
           <div className="bg-white w-full shadow rounded-lg p-5">
             <textarea className="bg-gray-200 w-full rounded-lg shadow border p-2" rows="3" placeholder="Share your thoughts"></textarea>
 
             <div className="w-full flex flex-row flex-wrap mt-3">
 
-              <div className="w-full">
-                <button type="button" className="content-center	 bg-indigo-400 hover:bg-indigo-300 text-white p-2 rounded-lg">Submit</button>
+              <div className="w-full flex flex-col items-center">
+                <button type="button" className="content-center bg-indigo-400 hover:bg-indigo-300 text-white p-2 rounded-lg">Submit</button>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ const Test = () => {
         </div>
       </div>
     </div>
-    </div>
+  </div>
 
   )
 }

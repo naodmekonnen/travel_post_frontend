@@ -1,8 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { useGlobalState } from "../context/GlobalState";
+
 
 
 const Navbar = () => {
+
+  const [ state, dispatch ] = useGlobalState();
+
 
   return (
 
@@ -11,6 +16,7 @@ const Navbar = () => {
     <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="posts">Posts</a>
     <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="login">Login</a>
     <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="register">Sign Up</a>
+    <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href={state.currentUser && ("profile")}>My Profile</a>
     <a className="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="test">Temp</a>
 </div>
   )

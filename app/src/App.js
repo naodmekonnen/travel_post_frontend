@@ -17,7 +17,7 @@ import AboutUs from './components/AboutUs';
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-gradient-to-b from-blue-400 to-blue-1800">
 
       <GlobalProvider>
 
