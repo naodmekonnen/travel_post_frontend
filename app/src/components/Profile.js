@@ -6,7 +6,14 @@ import request from "../services/api.request";
 const Profile = () => {
   const [state, dispatch] = useGlobalState();
   const [userData, setUserData] = useState([]);
+<<<<<<< HEAD
   const [follow, setFollow] = useState();
+=======
+  const [followers, setFollowers] = useState();
+  const [following, setFollowing] = useState();
+  const [followUser, setfollowUser] = useState();
+
+>>>>>>> follows
 
 
   const authUser = state.currentUser.user_id;
@@ -27,6 +34,10 @@ const Profile = () => {
   }, []);
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> follows
   async function getFollowers() {
     let options = {
       url: "followers/",
@@ -36,17 +47,62 @@ const Profile = () => {
       },
     };
     let resp = await request(options);
+<<<<<<< HEAD
     setFollow(resp.data);
+=======
+    setFollowers(resp.data);
+>>>>>>> follows
   }
 
   useEffect(() => {
     getFollowers();
   }, []);
+<<<<<<< HEAD
+=======
+
+  async function getFollowing() {
+    let options = {
+      url: "followers/",
+      method: "GET",
+      params: {
+        author__id: state.currentUser.user_id,
+      },
+    };
+    let resp = await request(options);
+    setFollowing(resp.data);
+  }
+
+  useEffect(() => {
+    getFollowing();
+  }, []);
+
+
+//   async function postFollower(postId) {
+//     let options = {
+//         url: 'followers/',
+//         method: 'POST',
+//         data: {
+//             follower: state.currentUser.user_id,
+//         }
+//     }
+//     console.log(options)
+//     let resp = await request(options);
+//     setfollowUser([
+//         ...followUser,
+//         resp.data
+//     ])
+//     getFollowing();
+// }
+
+
+
+>>>>>>> follows
 
 
   return (
 
     <div>
+<<<<<<< HEAD
       <div className="flex items-center min-h-screen w-full justify-center">
         <div className="max-w-7xl">
           <div className="bg-white shadow-xl rounded-lg py-3">
@@ -76,6 +132,17 @@ const Profile = () => {
       </div>
     </div>
 
+=======
+      <h4>username: {userData.username}</h4>
+      <h4>first name: {userData.first_name}</h4>
+      <h4>last name: {userData.last_name}</h4>
+      <h4>email: {userData.email}</h4>
+      <div>
+        <h4>followers: {followers?.username}</h4>
+        <h4>following: {following?.username}</h4>
+      </div>
+    </div>
+>>>>>>> follows
   )
 }
 

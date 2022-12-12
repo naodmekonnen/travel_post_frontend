@@ -8,7 +8,11 @@ import React, { useState, useEffect } from "react";
 // const Follow = () => {
 
 //     const [state, dispatch] = useGlobalState();
+<<<<<<< HEAD
 //     const [follow, setFollow] = useState();
+=======
+//     const [followers, setFollowers] = useState();
+>>>>>>> follows
 
 //     async function getFollowers() {
 //         let options = {
@@ -19,16 +23,30 @@ import React, { useState, useEffect } from "react";
 //             },
 //         };
 //         let resp = await request(options);
+<<<<<<< HEAD
 //         setPostData(resp.data);
 //         console.log(postData)
 //     }
 
 //     useEffect(() => {
 //         getPosts();
+=======
+//         setFollowers(resp.data);
+//         console.log(followers)
+//     }
+
+//     useEffect(() => {
+//         getFollowers();
+>>>>>>> follows
 //     }, []);
 
 
+// return (
+//     <div></div>
+//   )
+// }
 
+<<<<<<< HEAD
 
 
 
@@ -37,4 +55,6 @@ import React, { useState, useEffect } from "react";
 //   )
 // }
 
+=======
+>>>>>>> follows
 // export default Follow
