@@ -147,9 +147,9 @@ const Posts = () => {
                                     <div className="mt-3 flex flex-col">
                                         <div className="bg-white mt-3 rounded-lg">
                                             <div className="w-full text-left text-gray-700">
-                                                <p className=" text-gray-400 dark:text-white">{post.post_author.username}</p>
+                                                <p className="dark:text-gray-300 md:text-sm">{post.post_author.username}</p>
                                             </div>
-                                            <div className="bg-white border shadow p-5 text-gray-400 font-bold text-center">
+                                            <div className="bg-white border shadow p-5 dark:text-gray-300 md:text-sm font-bold text-center">
                                                 <p>{post.body}</p>
                                             </div>
                                             <div className="w-full flex flex-row flex-wrap mt-4">

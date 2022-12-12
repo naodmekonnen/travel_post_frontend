@@ -8,7 +8,7 @@ function NavBar() {
   const [ state, dispatch ] = useGlobalState();
 
   return (
-    <div className="border-0 p-3 w-4/4 text-xl text-center text-gray-600 font-semibold"> 
+    <div className="border-0 p-3 w-4/4 text-xl text-center text-gray-600 font-semibold bg-white"> 
     <nav>
       <ul style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "space-evenly" }}> 
         <li>
