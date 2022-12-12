@@ -5,36 +5,36 @@ import React, { useState, useEffect } from "react";
 
 
 
-const Follow = () => {
+// const Follow = () => {
 
-    const [state, dispatch] = useGlobalState();
-    const [follow, setFollow] = useState();
+//     const [state, dispatch] = useGlobalState();
+//     const [follow, setFollow] = useState();
 
-    async function getFollowers() {
-        let options = {
-            url: "posts/",
-            method: "GET",
-            params: {
-                author__id: state.currentUser.user_id,
-            },
-        };
-        let resp = await request(options);
-        setPostData(resp.data);
-        console.log(postData)
-    }
+//     async function getFollowers() {
+//         let options = {
+//             url: "posts/",
+//             method: "GET",
+//             params: {
+//                 author__id: state.currentUser.user_id,
+//             },
+//         };
+//         let resp = await request(options);
+//         setPostData(resp.data);
+//         console.log(postData)
+//     }
 
-    useEffect(() => {
-        getPosts();
-    }, []);
-
-
+//     useEffect(() => {
+//         getPosts();
+//     }, []);
 
 
 
 
-  return (
-    <div></div>
-  )
-}
 
-export default Follow
+
+//   return (
+//     <div></div>
+//   )
+// }
+
+// export default Follow
