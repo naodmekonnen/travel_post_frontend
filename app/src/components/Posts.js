@@ -10,6 +10,12 @@ const Posts = () => {
     const [commentData, setCommentData] = useState([])
     const [comments, setComments] = useState('')
 
+    const [like, setLike] = useState(0)
+    const [dislike, setDislike] = useState(0) 
+
+    const [likeactive, setLikeActive] = useState(false)
+    const [dislikeActive, setDislikeActive] = useState(false) 
+
     async function getPosts() {
         let options = {
             url: "posts/",
@@ -80,6 +86,36 @@ const Posts = () => {
         getPosts()
     }
 
+    function Like(){
+        if(likeactive){
+            setLikeActive(false)
+            setLike(like - 1)
+        }else{
+            setLikeActive(true)
+            setLike(like + 1)
+            if(dislikeActive){
+                setDislikeActive(false)
+                setLike(Like + 1)
+                setDislike(dislike - 1)
+                }
+            }
+        }
+        
+        function Dislike(){
+        if(likeactive){
+            setDislikeActive(false)
+            setDislike(dislike - 1)
+        }else{
+            setDislikeActive(true)
+            setDislike(dislike + 1)
+            if(likeactive){
+                setLikeActive(false)
+                setDislike(dislike + 1)
+                setLike(dislike - 1)
+            }
+        }
+        }
+
 
 
 
@@ -99,7 +135,7 @@ const Posts = () => {
                                         <button type="button" className="content-center bg-indigo-400 hover:bg-indigo-300 text-white p-2 rounded-lg"
                                             onClick={sendPosts}
                                         >
-                                            Submit
+                                        Share
                                         </button>
                                     </div>
                                 </div>
@@ -114,16 +150,11 @@ const Posts = () => {
                                             <div className="bg-white border shadow p-5 text-gray-400 font-semibold">
                                                 <p>{post.body}</p>
                                             </div>
-                                            {post.comments.map((c) => (
-                                                <div key={c.id} className="row">
-                                                 
-                                            
-                                            <div className="bg-white w-full shadow rounded-lg p-5">
-                                                <div className="w-full flex flex-row flex-wrap mt-0">
+                                            <div className="w-full flex flex-row flex-wrap mt-4">
                                                     <form className='w-full bg-white'>
                                                         <label htmlFor="comment" className="sr-only">Your comment</label>
                                                         <div className="w-full flex items-center px-3 py-2 rounded-lg">
-                                                            <textarea id="comment" rows="1" className="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."
+                                                            <textarea id="comment" rows="1" className="block mx-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your comment..."
                                                                 onChange={(e) => setComments(e.target.value)}
                                                             >
                                                             </textarea>
@@ -131,24 +162,28 @@ const Posts = () => {
                                                                 onClick={() => postComment(post.id)}
                                                             >
                                                                 <svg aria-hidden="true" className="w-6 h-6 rotate-90" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
-                                                                <span className="sr-only">Send message</span>
+                                                                <span className="sr-only"></span>
                                                             </button>
                                                         </div>
                                                     </form>
                                                 </div>
-                                            </div>
-                                            <div className="border-4 border-gray rounded-b-lg shadow p-5 text-xl text-gray-700 content-center font-semibold flex flex-row flex-wrap">
+                                            {post.comments.map((c) => (
+                                        <div key={c.id}>
+                                            <div className="bg-white w-full shadow rounded-lg p-5">
+                                                
+                                                <div className="border-4 border-gray rounded-b-lg shadow p-5 text-xl text-gray-700 content-center font-semibold flex flex-row flex-wrap">
                                                 <div className="w-full">
                                                     <p className=" text-gray-400 dark:text-white">{c.comment} - {c.commented_by}</p>
                                                 </div>
                                             </div>
+                                            </div>
+                                              
                                         </div>
                                         ))}
                                         </div>
                                         <div className="bg-white mt-3">
                                             <img className="border rounded-t-lg shadow-lg " src="https://images.unsplash.com/photo-1572817519612-d8fadd929b00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"></img>
                                             <div className="bg-white border shadow p-5 text-xl text-gray-700 font-semibold">
-                                                A Pretty Cool photo from the mountains. Image credit to @danielmirlea on Unsplash.
                                             </div>
 
                                         </div>

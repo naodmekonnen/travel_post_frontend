@@ -30,6 +30,7 @@ const Login = () => {
     }
 
 
+
 return (
         <div>
             <div className="bg-gradient-to-b from-blue-400 to-blue-1800 h-screen overflow-hidden flex items-center justify-center">
@@ -60,7 +61,7 @@ return (
 
                             />
                         </div>
-                        <button className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full"
+                        <button className="bg-gradient-to-r from-gray-800 to-blue-gray-400 font-medium p-2 md:p-4 text-white uppercase w-full"
                         type='submit'
                         >Login</button>
                     </form>

@@ -8,7 +8,6 @@ import Home from './components/Home'
 import Posts from './components/Posts';
 import Profile from './components/Profile';
 import Logout from './components/Logout';
-import Test from './components/Test'
 import { Outlet } from "react-router-dom";
 import { GlobalProvider } from './context/GlobalState';
 import AboutUs from './components/AboutUs';
@@ -35,7 +34,6 @@ function App() {
             <Route path='/posts' element={<Posts />}></Route>
             <Route path='/profile' element={<Profile />}></Route>
             <Route path='/logout' element={<Logout />}></Route>
-            <Route path='/test' element={<Test />}></Route>
 
             
         </Routes>

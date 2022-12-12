@@ -17,7 +17,8 @@ const Navbar = () => {
     <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="login">Login</a>
     <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="register">Sign Up</a>
     <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href={state.currentUser && ("profile")}>My Profile</a>
-    <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="test">Temp</a>
+    <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="logout">Logout</a>
+
 </div>
   )
 }
