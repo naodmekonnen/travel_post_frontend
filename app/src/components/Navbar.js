@@ -1,27 +1,127 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useGlobalState } from "../context/GlobalState";
 
 
 
-const Navbar = () => {
-
-
-
+function NavBar() {
+  const [ state, dispatch ] = useGlobalState();
 
   return (
-      <div className='bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full space-x-4 sticky top-0 overflow-hidden flex items-center justify-center'>
-
-        <a href='home'>Home</a>
-        <a href='about'>About</a>
-        <a href='login'>Login</a>
-        <a href='register'>Sign Up</a>
-        <a href='posts'>posts</a>
-        <a href='profile'>Profile</a>
-        <a href='logout'>Logout</a>
-
-      </div>
-  )
+    <div className="border-0 p-3 w-4/4 text-xl text-center text-gray-600 font-semibold bg-white"> 
+    <nav>
+      <ul style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "space-evenly" }}> 
+        <li>
+          <Link to="/home">Home</Link>
+        </li>
+        {
+          !state.currentUser && (
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          )
+        }
+        {
+          state.currentUser && (
+            <li>
+              <Link to="/logout">Logout</Link>
+            </li>
+          )
+        }
+        {
+          !state.currentUser && (
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+          )
+        }
+        {
+          state.currentUser && (
+            <li>
+              <Link to="/posts">Posts</Link>
+            </li>
+          )
+        }
+        {
+          state.currentUser && (
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+          )
+        }
+      </ul>
+    </nav>
+    </div>
+  );
 }
 
-export default Navbar
+export default NavBar;
 
 
+
+
+
+
+
+
+
+
+
+
+// export default Navbar
+// import { Link } from "react-router-dom";
+// import { useGlobalState } from "../context/GlobalState";
+
+// function NavBar() {
+//   const [ state, dispatch ] = useGlobalState();
+
+//   return (
+//     <nav>
+//       <ul style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "space-evenly", listStyle: 'none' }}>
+//         <li>
+//           <Link to="/">Home</Link>
+//         </li>
+//         {
+//           !state.currentUser && (
+//             <li>
+//               <Link to="/login">Login</Link>
+//             </li>
+//           )
+//         }
+//         {
+//           !state.currentUser && (
+//             <li>
+//               <Link to="/posts">Posts</Link>
+//             </li>
+//           )
+//         }
+//         {
+//           !state.currentUser && (
+//             <li>
+//               <Link to="/register">Register</Link>
+//             </li>
+//           )
+//         }
+//         {
+//           state.currentUser && (
+//             <li>
+//               <Link to="/profile">Profile</Link>
+//             </li>
+//           )
+//         }
+//       </ul>
+//     </nav>
+//   );
+// }
+
+// export default NavBar;
+
+
+
+{/* <div className="w-full antialiased font-medium md:p-4 flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:p0">
+    <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="home">Home</a>
+    <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="posts">Posts</a>
+    <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="login">Login</a>
+    <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="register">Sign Up</a>
+    <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href={state.currentUser && ("profile")}>My Profile</a>
+    <a className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold" href="logout">Logout</a> */}

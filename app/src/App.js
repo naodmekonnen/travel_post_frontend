@@ -10,13 +10,12 @@ import Profile from './components/Profile';
 import Logout from './components/Logout';
 import { Outlet } from "react-router-dom";
 import { GlobalProvider } from './context/GlobalState';
-import AboutUs from './components/AboutUs';
 
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-gradient-to-b from-blue-400 to-blue-1800">
 
       <GlobalProvider>
 
@@ -28,12 +27,12 @@ function App() {
           <Routes>
             
             <Route path='/home' element={<Home />}></Route>
-            <Route path='/about' element={<AboutUs />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
             <Route path='/posts' element={<Posts />}></Route>
             <Route path='/profile' element={<Profile />}></Route>
             <Route path='/logout' element={<Logout />}></Route>
+
             
         </Routes>
         </BrowserRouter>
