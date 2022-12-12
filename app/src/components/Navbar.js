@@ -12,7 +12,7 @@ function NavBar() {
     <nav>
       <ul style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "space-evenly", listStyle: 'none' }}>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
         {
           !state.currentUser && (

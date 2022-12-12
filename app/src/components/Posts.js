@@ -1,6 +1,7 @@
 import { useGlobalState } from "../context/GlobalState";
 import request from "../services/api.request";
 import React, { useState, useEffect } from "react";
+import balloons from '../assets/balloons.jpg'
 
 
 const Posts = () => {
@@ -148,7 +149,7 @@ const Posts = () => {
                                             <div className="w-full text-left text-gray-700">
                                                 <p className=" text-gray-400 dark:text-white">{post.post_author.username}</p>
                                             </div>
-                                            <div className="bg-white border shadow p-5 text-gray-400 font-semibold">
+                                            <div className="bg-white border shadow p-5 text-gray-400 font-bold text-center">
                                                 <p>{post.body}</p>
                                             </div>
                                             <div className="w-full flex flex-row flex-wrap mt-4">
@@ -172,9 +173,9 @@ const Posts = () => {
                                         <div key={c.id}>
                                             <div className="bg-white w-full shadow rounded-lg p-5">
                                                 
-                                                <div className="border-4 border-gray rounded-b-lg shadow p-5 text-xl text-gray-700 content-center font-semibold flex flex-row flex-wrap">
+                                                <div className="border-4 border-gray rounded-b-lg shadow p-5 text-xl text-gray-200 content-center font-bold flex flex-row flex-wrap">
                                                 <div className="w-full">
-                                                    <p className=" text-gray-400 dark:text-white">{c.comment} - {c.commented_by}</p>
+                                                    <p className=" text-gray-400 dark:text-white text-right text-sm font-bold">{c.comment} - {c.commented_by}</p>
                                                 </div>
                                             </div>
                                             </div>
@@ -183,10 +184,7 @@ const Posts = () => {
                                         ))}
                                         </div>
                                         <div className="bg-white mt-3">
-                                            <img className="border rounded-t-lg shadow-lg " src="https://images.unsplash.com/photo-1572817519612-d8fadd929b00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"></img>
-                                            <div className="bg-white border shadow p-5 text-xl text-gray-700 font-semibold">
-                                            </div>
-
+                                            <img className="border rounded-t-lg shadow-lg h-full w-full" src={balloons}></img>
                                         </div>
                                     </div>
                                 </div>
