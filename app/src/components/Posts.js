@@ -132,7 +132,7 @@ const Posts = () => {
                                 </textarea>
                                 <div className="w-full flex flex-row flex-wrap mt-3">
                                     <div className="w-full flex flex-col items-center">
-                                        <button type="button" className="content-center bg-indigo-400 hover:bg-indigo-300 text-white p-2 rounded-lg"
+                                        <button type="button" className="content-center bg-gradient-to-b from-blue-400 to-blue-800 hover:bg-blue-1800 text-white p-2 rounded-lg"
                                             onClick={sendPosts}
                                         >
                                         Share
@@ -158,10 +158,10 @@ const Posts = () => {
                                                                 onChange={(e) => setComments(e.target.value)}
                                                             >
                                                             </textarea>
-                                                            <button type="submit" className="inline-flex justify-center p-2 text-indigo-400 rounded-full cursor-pointer hover:bg-indigo-300 dark:text-blue-500 dark:hover:bg-gray-600"
+                                                            <button type="submit" className="inline-flex justify-center p-2 rounded-full"
                                                                 onClick={() => postComment(post.id)}
                                                             >
-                                                                <svg aria-hidden="true" className="w-6 h-6 rotate-90" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
+                                                                <svg aria-hidden="true" className="w-6 h-6 rotate-90" fill="gray" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
                                                                 <span className="sr-only"></span>
                                                             </button>
                                                         </div>
