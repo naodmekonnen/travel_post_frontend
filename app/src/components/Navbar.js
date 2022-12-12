@@ -8,14 +8,12 @@ function NavBar() {
   const [ state, dispatch ] = useGlobalState();
 
   return (
+    <div className="border-0 p-3 w-full text-xl text-center text-gray-600 font-semibold">
     <nav>
       <ul style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "space-evenly", listStyle: 'none' }}>
         <li>
           <Link to="/">Home</Link>
         </li>
-        {/* <li>
-          <Link to="/matches">Matches</Link>
-        </li> */}
         {
           !state.currentUser && (
             <li>
@@ -53,6 +51,7 @@ function NavBar() {
         }
       </ul>
     </nav>
+    </div>
   );
 }
 

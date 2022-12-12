@@ -6,7 +6,7 @@ import request from "../services/api.request";
 const Profile = () => {
   const [state, dispatch] = useGlobalState();
   const [userData, setUserData] = useState([]);
-  const [follow, setFollow] = useState();
+  // const [follow, setFollow] = useState();
 
 
   const authUser = state.currentUser.user_id;
