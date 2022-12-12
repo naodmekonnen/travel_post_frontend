@@ -61,7 +61,7 @@ return (
 
                             />
                         </div>
-                        <button className="bg-gradient-to-r from-gray-800 to-blue-gray-400 font-medium p-2 md:p-4 text-white uppercase w-full"
+                        <button className="bg-gray-500 font-medium p-2 md:p-4 text-white uppercase w-full"
                         type='submit'
                         >Login</button>
                     </form>
