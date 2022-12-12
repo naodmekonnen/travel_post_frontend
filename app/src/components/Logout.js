@@ -5,20 +5,22 @@ import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
 
-let navigate = useNavigate();
-  
+  let navigate = useNavigate();
+
   const [state, dispatch] = useGlobalState();
-  
+
+
     AuthService
-        .logout();
+      .logout();
     dispatch({
-        currentUserToken: null,
-          currentUser: null
-      })
+      currentUserToken: null,
+      currentUser: null
+    })
     navigate("/home")
-  
-  
-return (
+
+
+
+  return (
     <div></div>
   )
 }

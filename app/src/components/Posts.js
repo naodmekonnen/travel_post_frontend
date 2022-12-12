@@ -34,7 +34,8 @@ const Posts = () => {
     }, []);
 
 
-    async function sendPosts() {
+    async function sendPosts(e) {
+        e.preventDefault();
         let options = {
             url: "posts/",
             method: "POST",

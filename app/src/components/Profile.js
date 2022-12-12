@@ -6,6 +6,8 @@ import request from "../services/api.request";
 const Profile = () => {
   const [state, dispatch] = useGlobalState();
   const [userData, setUserData] = useState([]);
+  const [follow, setFollow] = useState();
+
 
   const authUser = state.currentUser.user_id;
 
@@ -25,11 +27,29 @@ const Profile = () => {
   }, []);
 
 
+  // async function getFollowers() {
+  //     let options = {
+  //         url: "posts/",
+  //         method: "GET",
+  //         params: {
+  //             author__id: state.currentUser.user_id,
+  //         },
+  //     };
+  //     let resp = await request(options);
+  //     setFollow(resp.data);
+  //     console.log(follow)
+  // }
+
+  // useEffect(() => {
+  //     getFollowers();
+  // }, []);
+
+
   return (
 
   <div>
   <div className="flex items-center min-h-screen w-full justify-center">
-    <div className="max-w-xs">
+    <div className="max-w-7xl">
       <div className="bg-white shadow-xl rounded-lg py-3">
         <h4 className='text-center font-semibold'>Profile Details</h4>
         <table className="text-xs my-3">
