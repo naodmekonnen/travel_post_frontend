@@ -73,29 +73,3 @@ const Profile = () => {
 
 export default Profile;
 
-//   < div className="flex items-center h-screen w-full justify-center">
-//     <div className="max-w-xs">
-//       <div className="bg-white shadow-xl rounded-lg py-3">
-//         <table className="text-xs my-3">
-//           <tbody>
-//             <tr>
-//               <td className="px-2 py-2 text-gray-500 font-semibold">First Name</td>
-//               <td className="px-2 py-2">{userData.first_name}</td>
-//             </tr>
-//             <tr>
-//               <td className="px-2 py-2 text-gray-500 font-semibold">Last Name</td>
-//               <td className="px-2 py-2">{userData.last_name}</td>
-//             </tr>
-//             <tr>
-//               <td className="px-2 py-2 text-gray-500 font-semibold">username</td>
-//               <td className="px-2 py-2">{userData.username}</td>
-//             </tr>
-//             <tr>
-//               <td className="px-2 py-2 text-gray-500 font-semibold">Email</td>
-//               <td className="px-2 py-2">{userData.email}</td>
-//             </tr>
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-// </div>
